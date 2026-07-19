@@ -68,3 +68,46 @@ Same steps apply inside `robotics-engineer/` and `master-cv/`.
    and `Education` sections with your own details.
 3. Recompile with `pdflatex`.
 
+## Continuous Integration
+
+`.github/workflows/build-and-publish.yml` runs on every push to `main` that
+touches a `resume.tex` file:
+
+1. Compiles `software-developer/`, `robotics-engineer/`, and `master-cv/`
+   with `pdflatex` (via `xu-cheng/latex-action`), one per matrix job.
+2. Uploads each PDF as a build artifact (kept 30 days, useful for PRs/debugging).
+3. On `main` only, publishes the two public resumes (**not** `master-cv`, which
+   stays internal):
+   - Uploads `agus-darmawan-software-developer-cv.pdf` and
+     `agus-darmawan-robotics-engineer-cv.pdf` to Cloudflare R2 — the same
+     bucket `agus-darmawan.com` reads from via `NEXT_PUBLIC_CONTENT_URL`, so
+     a push here goes live on the site with no manual copy step.
+   - Attaches both PDFs to a rolling `latest-cv` GitHub Release, as an
+     always-current direct-download link independent of the website.
+
+### Required repository secrets
+
+Set these under **Settings → Secrets and variables → Actions**:
+
+| Secret | Description |
+| --- | --- |
+| `R2_ACCESS_KEY_ID` | Cloudflare R2 API token access key |
+| `R2_SECRET_ACCESS_KEY` | Cloudflare R2 API token secret |
+| `R2_BUCKET` | Target R2 bucket name (same one the site reads from) |
+| `R2_ENDPOINT` | R2 S3-compatible endpoint, e.g. `https://<account-id>.r2.cloudflarestorage.com` |
+| `R2_RESUME_PREFIX` | Path inside the bucket to upload to, e.g. `resume/` |
+
+Generate the R2 access key/secret from the Cloudflare dashboard
+(R2 → Manage R2 API Tokens). Scope it to the single bucket if possible.
+
+## Language
+
+The published resumes are English-only by design — that's the standard
+expected for tech roles internationally and in most Indonesian tech
+companies, and it keeps a single source of truth to maintain. The website
+itself can stay bilingual (EN/ID) independently of this. If an Indonesian
+version becomes genuinely necessary later (e.g. applying somewhere that
+explicitly requires it), duplicate a `resume.tex` into `resume.id.tex`
+alongside it — the workflow above would need a small matrix addition to
+build it too.
+
