@@ -1,0 +1,91 @@
+name: Build & Publish Resumes
+
+# Compiles each role-specific resume.tex to PDF, then publishes the results:
+#   1. As GitHub Actions build artifacts (every run)
+#   2. As a GitHub Release asset (every push to main)
+#   3. Uploaded to Cloudflare R2, the same bucket agus-darmawan.com reads
+#      resume PDFs from via NEXT_PUBLIC_CONTENT_URL — so a push here goes
+#      live on the site without any manual copy step.
+#
+# master-cv/ is intentionally NOT published to R2 or Releases — it's an
+# internal reference file, not meant to be public.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/resume.tex"
+      - ".github/workflows/build-and-publish.yml"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    name: Build (${{ matrix.variant }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [software-developer, robotics-engineer, master-cv]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: ${{ matrix.variant }}
+          root_file: resume.tex
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.variant }}-pdf
+          path: ${{ matrix.variant }}/resume.pdf
+          retention-days: 30
+
+  publish:
+    name: Publish public resumes
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    steps:
+      - name: Download software-developer PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: software-developer-pdf
+          path: dist/software-developer
+
+      - name: Download robotics-engineer PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: robotics-engineer-pdf
+          path: dist/robotics-engineer
+
+      - name: Rename for public download
+        run: |
+          mkdir -p dist/final
+          cp dist/software-developer/resume.pdf \
+             "dist/final/agus-darmawan-software-developer-cv.pdf"
+          cp dist/robotics-engineer/resume.pdf \
+             "dist/final/agus-darmawan-robotics-engineer-cv.pdf"
+          ls -la dist/final
+
+      - name: Upload to Cloudflare R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp dist/final \
+            "s3://${{ secrets.R2_BUCKET }}/${{ secrets.R2_RESUME_PREFIX }}" \
+            --recursive \
+            --endpoint-url "${{ secrets.R2_ENDPOINT }}"
+
+      - name: Create/update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-cv
+          name: Latest CV builds
+          body: |
+            Auto-built from `main` on every resume update.
+            Contains the latest PDF for each role-specific CV.
+          files: dist/final/*.pdf
+          make_latest: true
