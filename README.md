@@ -1,7 +1,6 @@
 # resume
 
 [![Build & Publish](https://github.com/agus-darmawan/resume/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/agus-darmawan/resume/actions/workflows/build-and-publish.yml)
-[![Portfolio](https://img.shields.io/badge/portfolio-agus--darmawan.com-blue)](https://agus-darmawan.com)
 [![Built with LaTeX](https://img.shields.io/badge/built%20with-LaTeX-008080)](https://www.latex-project.org/)
 
 > LaTeX resumes for **I Wayan Agus Darmawan** — Full-stack Developer &
