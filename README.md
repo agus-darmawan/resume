@@ -1,113 +1,73 @@
 # resume
 
-LaTeX resume templates, tailored per role, plus one master CV that holds
-everything. Each role-specific version reuses the same base layout (Charter
-font, ATS-friendly, single page) but with content and skills sections
-trimmed and adapted to the target job.
+[![Build & Publish](https://github.com/agus-darmawan/resume/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/agus-darmawan/resume/actions/workflows/build-and-publish.yml)
+[![Portfolio](https://img.shields.io/badge/portfolio-agus--darmawan.com-blue)](https://agus-darmawan.com)
+[![Built with LaTeX](https://img.shields.io/badge/built%20with-LaTeX-008080)](https://www.latex-project.org/)
+
+> LaTeX resumes for **I Wayan Agus Darmawan** — Full-stack Developer &
+> Robotics Engineer. One master copy holds everything; role-specific
+> versions are trimmed from it for actual job applications.
 
 ## Structure
 
 ```
 .
-├── master-cv/
-│   └── resume.tex          # Full history, everything, not for submission
-├── software-developer/
-│   └── resume.tex          # Full-stack / backend-focused resume (1 page)
-├── robotics-engineer/
-│   └── resume.tex          # Robotics / embedded-focused resume (1 page)
-└── .gitignore
+├── master-cv/             # everything, no page limit — internal reference only
+├── software-developer/    # trimmed to 1 page, full-stack focused
+└── robotics-engineer/     # trimmed to 1 page, robotics/embedded focused
 ```
+
+All three share the same base layout: Charter font, ATS-friendly
+(`\pdfgentounicode=1`), no exotic packages.
 
 ## Versions
 
-### `master-cv/resume.tex`
-The internal reference copy. Contains every job, every project, and the full
-skills list (web dev + robotics + everything else), with no 1-page limit.
-**Not meant to be sent to anyone as-is** — it's the source you trim from
-when building a role-specific resume, or when you need to remember exactly
-what you did on a given project. Update this file first whenever you gain
-new experience, then cherry-pick the relevant parts into the versions below.
-
-### `software-developer/resume.tex`
-Emphasizes full-stack web development: REST APIs, React, PostgreSQL, Docker,
-CI/CD. Skills grouped by Languages / Backend & APIs / Frontend / DevOps.
-
-### `robotics-engineer/resume.tex`
-Emphasizes robotics and embedded systems: ROS/ROS2, PID control, sensor
-fusion, Gazebo simulation, and hardware (Raspberry Pi, Arduino). Experience
-and projects are reordered/reframed to highlight hardware-software
-integration work.
+| File | Focus | Use for |
+| --- | --- | --- |
+| `master-cv/resume.tex` | Every job, project, and skill, unfiltered | Personal reference only — never sent out |
+| `software-developer/resume.tex` | REST APIs, React, PostgreSQL, Docker, CI/CD | Full-stack / backend roles |
+| `robotics-engineer/resume.tex` | ROS/ROS2, PID control, sensor fusion, embedded hardware | Robotics / embedded roles |
 
 ## Workflow
 
-1. Add new experience/projects to `master-cv/resume.tex` as they happen —
-   don't worry about length or relevance here, just capture everything.
-2. When applying to a job, open the closest matching role-specific file
-   (or copy `master-cv/resume.tex` into a new folder for a new role) and
-   trim it down to the 2-3 most relevant bullets per section, keeping it
-   to one page.
-3. Recompile and send only the role-specific PDF, never the master CV.
+1. Add new experience to `master-cv/resume.tex` first, as soon as it happens — no filtering, just capture it.
+2. When applying to a job, trim the relevant bullets into `software-developer/` or `robotics-engineer/` (or a new folder for a new role), keeping it to 1 page.
+3. Only ever send the role-specific PDF — the master CV stays private.
 
 ## Building
 
 Requires a LaTeX distribution (TeX Live recommended).
 
 ```bash
-cd software-developer
+cd software-developer   # or robotics-engineer, master-cv
 pdflatex resume.tex
-pdflatex resume.tex   # run twice to resolve references
+pdflatex resume.tex     # run twice to resolve references
 ```
 
-Same steps apply inside `robotics-engineer/` and `master-cv/`.
+## CI/CD
 
-## Customizing
+`.github/workflows/build-and-publish.yml` compiles all three resumes on
+every push to `main`. `software-developer` and `robotics-engineer` PDFs are
+then:
 
-1. Update the header block (name, phone, email, LinkedIn, GitHub, portfolio
-   link) in the `\begin{center}...\end{center}` section.
-2. Edit `Professional Summary`, `Experience`, `Projects`, `Technical Skills`,
-   and `Education` sections with your own details.
-3. Recompile with `pdflatex`.
+- uploaded to the Cloudflare R2 bucket that `agus-darmawan.com` reads from (`NEXT_PUBLIC_CONTENT_URL`) — so a push here goes live on the site automatically
+- attached to a rolling `latest-cv` GitHub Release as a direct-download backup
 
-## Continuous Integration
+`master-cv` is compiled as a build artifact but never published anywhere.
 
-`.github/workflows/build-and-publish.yml` runs on every push to `main` that
-touches a `resume.tex` file:
-
-1. Compiles `software-developer/`, `robotics-engineer/`, and `master-cv/`
-   with `pdflatex` (via `xu-cheng/latex-action`), one per matrix job.
-2. Uploads each PDF as a build artifact (kept 30 days, useful for PRs/debugging).
-3. On `main` only, publishes the two public resumes (**not** `master-cv`, which
-   stays internal):
-   - Uploads `agus-darmawan-software-developer-cv.pdf` and
-     `agus-darmawan-robotics-engineer-cv.pdf` to Cloudflare R2 — the same
-     bucket `agus-darmawan.com` reads from via `NEXT_PUBLIC_CONTENT_URL`, so
-     a push here goes live on the site with no manual copy step.
-   - Attaches both PDFs to a rolling `latest-cv` GitHub Release, as an
-     always-current direct-download link independent of the website.
-
-### Required repository secrets
-
-Set these under **Settings → Secrets and variables → Actions**:
+**Required repo secrets** (Settings → Secrets and variables → Actions):
 
 | Secret | Description |
 | --- | --- |
 | `R2_ACCESS_KEY_ID` | Cloudflare R2 API token access key |
 | `R2_SECRET_ACCESS_KEY` | Cloudflare R2 API token secret |
-| `R2_BUCKET` | Target R2 bucket name (same one the site reads from) |
-| `R2_ENDPOINT` | R2 S3-compatible endpoint, e.g. `https://<account-id>.r2.cloudflarestorage.com` |
-| `R2_RESUME_PREFIX` | Path inside the bucket to upload to, e.g. `resume/` |
-
-Generate the R2 access key/secret from the Cloudflare dashboard
-(R2 → Manage R2 API Tokens). Scope it to the single bucket if possible.
+| `R2_BUCKET` | Target R2 bucket (same one the site reads from) |
+| `R2_ENDPOINT` | R2 S3-compatible endpoint |
+| `R2_RESUME_PREFIX` | Path inside the bucket, e.g. `resume/` |
 
 ## Language
 
-The published resumes are English-only by design — that's the standard
-expected for tech roles internationally and in most Indonesian tech
-companies, and it keeps a single source of truth to maintain. The website
-itself can stay bilingual (EN/ID) independently of this. If an Indonesian
-version becomes genuinely necessary later (e.g. applying somewhere that
-explicitly requires it), duplicate a `resume.tex` into `resume.id.tex`
-alongside it — the workflow above would need a small matrix addition to
-build it too.
-
+English only, by design — standard for tech roles internationally and at
+most Indonesian tech companies, and it keeps one source of truth to
+maintain. Add `resume.id.tex` later if a Bahasa Indonesia version becomes
+genuinely necessary for a specific application.
