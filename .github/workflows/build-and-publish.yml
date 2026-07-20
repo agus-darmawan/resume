@@ -1,14 +1,5 @@
 name: Build & Publish Resumes
 
-# Compiles each role-specific resume.tex to PDF, then publishes the results:
-#   1. As GitHub Actions build artifacts (every run)
-#   2. As a GitHub Release asset (every push to main)
-#   3. (currently disabled) Upload to Cloudflare R2 — re-enable once R2
-#      secrets are configured in this repo.
-#
-# master-cv/ is intentionally NOT published to R2 or Releases — it's an
-# internal reference file, not meant to be public.
-
 on:
   push:
     branches: [main]
