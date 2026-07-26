@@ -1,4 +1,4 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -25,7 +25,7 @@
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\textheight}{1.3in}
 \setlength{\footskip}{4.08003pt}
 
 \urlstyle{same}
@@ -78,13 +78,14 @@
     +62 821-4670-9679 $|$
     \href{mailto:darmawandeveloper@gmail.com}{\underline{darmawandeveloper@gmail.com}} $|$
     \href{https://www.linkedin.com/in/agusdarmawnn/}{\underline{linkedin.com/in/agusdarmawnn}} $|$
+    \href{https://github.com/agus-darmawan}{\underline{github.com/agus-darmawan}} $|$
     \href{https://agus-darmawan.com}{\underline{agus-darmawan.com}}
 \end{center}
 
 %-----------PROFESSIONAL SUMMARY-----------
 \section{Professional Summary}
 \small{
-Hands-on Robotics Engineer and System Integrator experienced in designing, developing, and deploying autonomous platforms from the ground up by integrating end-to-end hardware-software systems, leading technical execution, and delivering industrial-grade solutions through cross-functional collaboration.
+Hands-on Robotics Engineer and System Integrator experienced in designing, developing, and deploying autonomous platforms end-to-end -- hardware, control loops, and the software stack around them -- across quadruped, ASV, and drone systems.
 }
 
 %-----------EXPERIENCE-----------
@@ -95,8 +96,7 @@ Hands-on Robotics Engineer and System Integrator experienced in designing, devel
       {PT. Ezra Robotics Teknologi}{Dec. 2024 -- Present}
       {Robotics Systems Lead $|$ Robotics Engineer}{Tangerang Selatan, Indonesia}
       \resumeItemListStart
-        \resumeItem{Led system integration, hardware-software architecture, and technical deployment for autonomous quadruped robots across industrial inspection, surveillance, and public infrastructure.}
-        \resumeItem{Designed and deployed ROS2-based autonomy applications, including LiDAR-Inertial Odometry (LIO), RTK GNSS localization, automated thermal inspection, and web-based telemetry monitoring.}
+        \resumeItem{Led system integration, hardware-software architecture, and technical deployment for autonomous quadruped robots across industrial inspection, surveillance, and public infrastructure, including LiDAR-Inertial Odometry (LIO), RTK GNSS localization, and thermal inspection.}
         \resumeItem{Executed field deployments, testing, and technical demonstrations for enterprise clients across electrical substations (PLN), oil \& gas facilities (Pertamina), and agricultural plantations (PTPN).}
       \resumeItemListEnd
 
@@ -104,35 +104,24 @@ Hands-on Robotics Engineer and System Integrator experienced in designing, devel
       {PT. ITS Tekno Sains}{Sep. 2024 -- Aug. 2025}
       {Robotics Software Engineer --- iCar ITS}{Surabaya, Indonesia}
       \resumeItemListStart
-        \resumeItem{Developed autonomous driving software using ROS2, Fast-LIO2, and RTK GPS for reliable navigation in both GPS-available and GPS-denied environments.}
+        \resumeItem{Developed autonomous driving software using ROS2, Fast-LIO2, and RTK GPS for reliable navigation in GPS-available and GPS-denied environments, tuning PID controllers for vehicle stability.}
         \resumeItem{Engineered a web-based Ground Control Station using Next.js, ROSBridge, PostgreSQL, and Docker for real-time telemetry visualization, remote operation, and maintenance logging.}
-        \resumeItem{Tuned PID controllers and optimized obstacle avoidance algorithms to ensure vehicle stability during extensive outdoor testing.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Barunastra ITS Roboboat Team}{Apr. 2022 -- Nov. 2024}
       {Electrical \& Programming Division Leader $|$ Robotics Software Engineer}{Surabaya, Indonesia}
       \resumeItemListStart
-        \resumeItem{Led the Electrical \& Programming division in designing and building autonomous surface vehicles (ASVs) from the ground up for international robotics competitions.}
-        \resumeItem{Integrated LiDAR, RTK GPS, IMU, and cameras through multi-sensor fusion for autonomous maritime navigation, perception, and obstacle avoidance.}
-        \resumeItem{Coordinated hardware-software integration, low-level firmware, and budget constraints across multidisciplinary teams to achieve international championship titles.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {B401 Robotics Laboratory}{Jun. 2024 -- Aug. 2025}
-      {Laboratory Assistant}{Surabaya, Indonesia}
-      \resumeItemListStart
-        \resumeItem{Engineered full-stack ROS-based autonomy and manipulation architectures on physical TurtleBot and UR5 robotic platforms.}
-        \resumeItem{Validated robotics algorithms through physical deployment and high-fidelity simulations using Gazebo, Isaac Sim, and Webots.}
+        \resumeItem{Led the Electrical \& Programming division in designing and building autonomous surface vehicles (ASVs) from the ground up, integrating LiDAR, RTK GPS, IMU, and camera sensor fusion for international competitions.}
+        \resumeItem{Coordinated hardware-software integration and budget constraints across multidisciplinary teams to achieve international championship titles.}
       \resumeItemListEnd
 
     \resumeSubheading
   {PT. ITS Tekno Sains}{Sep. 2023 -- Dec. 2023}
   {Robotics Software Lead --- Autonomous Surface Vehicle (Project-Based)}{Surabaya, Indonesia}
 \resumeItemListStart
-  \resumeItem{Led software development for a ROS-based Autonomous Surface Vehicle (ASV) for hydrographic bathymetry surveys, a collaborative project between PT ITS Tekno Sains, PT Robomarine Indonesia (mechanical \& electrical), and STTAL (end user).}
-  \resumeItem{Designed and implemented autonomous navigation using Pure Pursuit with GPS RTK and IMU localization, integrated YOLO-based buoy detection, and developed an RViz-based mission control and monitoring interface.}
-  \resumeItem{Directed software integration, mentored MBKM ITS engineers, led field trials, and resolved post-deployment issues to deliver a field-ready autonomous marine system.}
+  \resumeItem{Led software development for a ROS-based ASV for hydrographic bathymetry surveys, a collaborative project between PT ITS Tekno Sains, PT Robomarine Indonesia, and STTAL (end user).}
+  \resumeItem{Designed autonomous navigation using Pure Pursuit with GPS RTK/IMU localization and YOLO-based buoy detection, directed field trials, and mentored MBKM ITS engineers to deliver a field-ready system.}
 \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -142,15 +131,17 @@ Hands-on Robotics Engineer and System Integrator experienced in designing, devel
   \resumeSubHeadingListStart
 
     \resumeProjectHeading
-      {\textbf{Quadruped Autonomous Inspection System} $|$ \emph{ROS2, C++, Python, Livox, RTK GNSS}}{2025}
+      {\textbf{NextGen GCS} $|$ \emph{Tauri, Go, PyTorch/TensorRT, NATS, CesiumJS}}{2026}
       \resumeItemListStart
-        \resumeItem{Designed autonomous waypoint navigation and mission execution logic for industrial quadruped platforms, integrating thermal imaging and multi-sensor payloads to deliver automated site anomaly inspection reports.}
+        \resumeItem{Built a full-stack drone ground control station: live video (RTSP to WebRTC/HLS), real-time YOLO object detection, and CesiumJS 3D flight tracking, backed by a Go/NATS services layer.}
+        \resumeItem{Designed a digital OpenIPC/WFB-ng video link to replace an analog FPV setup, feeding the GCS's video and inference pipeline.}
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Ground Control Station (GCS)} $|$ \emph{Next.js, React, ROSBridge, PostgreSQL, Docker}}{2025}
+      {\textbf{Embedded Systems \& SLAM} $|$ \emph{FAST-LIO2, LIO-SAM, ESP-IDF, Jetson}}{2026}
       \resumeItemListStart
-        \resumeItem{Built a scalable web-based control station linking web dashboards to ROS2 nodes via WebSockets, allowing operators to visualize live robot telemetry, execute mission planning, and manage remote controls.}
+        \resumeItem{Built a Dockerized offline LiDAR-mapping pipeline (FAST-LIO2, LIO-SAM) for a Unitree Go2 EDU with Livox Mid-360, and extended the control SDK for a dual-board (Rockchip + Jetson) quadruped toward ROS2 Nav2 autonomy.}
+        \resumeItem{Developed modular ESP32-C3 firmware converting PX4 AUX RC PWM into brushed-ESC speed control, with an anti-windup PID loop, encoder feedback, and a WiFi web UI for live tuning.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -160,20 +151,19 @@ Hands-on Robotics Engineer and System Integrator experienced in designing, devel
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{Programming Languages}{: C/C++, Python, Swift, TypeScript/JavaScript, SQL} \\
-     \textbf{Robotics Frameworks}{: ROS/ROS2, ROSBridge, Gazebo, Isaac Sim, Webots} \\
-     \textbf{Platforms \& Hardware}{: Quadrupeds, Autonomous Surface Vehicles, Autonomous Ground Vehicles, Quadcopters} \\
+     \textbf{Robotics Frameworks}{: ROS/ROS2, ROSBridge, PID control, sensor fusion, SLAM (FAST-LIO2, LIO-SAM), Gazebo, Isaac Sim, Webots} \\
+     \textbf{Embedded \& AI}{: ESP-IDF, PlatformIO, RTK GNSS, MAVLink, YOLO, PyTorch/TensorRT} \\
+     \textbf{Platforms \& Hardware}{: Quadrupeds, Autonomous Surface Vehicles, Autonomous Ground Vehicles, Quadcopters/Drones} \\
     }}
  \end{itemize}
 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
-    \resumeSubheading
-      {Institut Teknologi Sepuluh Nopember (ITS)}{Surabaya, Indonesia}
-      {Bachelor of Engineering in Computer Engineering}{Jul. 2021 -- Sep. 2025}
-    \resumeSubheading
-      {Apple Developer Academy $|$ Indonesia}{Surabaya, Indonesia}
-      {iOS Developer Cohort}{Feb. 2025 -- Dec. 2025}
+    \resumeProjectHeading
+      {\textbf{Institut Teknologi Sepuluh Nopember (ITS)} --- B.Eng. Computer Engineering}{Jul. 2021 -- Sep. 2025}
+    \resumeProjectHeading
+      {\textbf{Apple Developer Academy, Indonesia} --- iOS Developer Cohort}{Feb. 2025 -- Dec. 2025}
   \resumeSubHeadingListEnd
 
 \end{document}

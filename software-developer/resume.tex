@@ -1,4 +1,4 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -25,7 +25,7 @@
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\textheight}{1.3in}
 \setlength{\footskip}{4.08003pt}
 
 \urlstyle{same}
@@ -73,79 +73,97 @@
 
 %----------HEADING----------
 \begin{center}
-    \textbf{\Huge \scshape Jake Ryan} \\ \vspace{4pt}
-    \small 123-456-7890 $|$ \href{mailto:x@x.com}{\underline{jake@su.edu}} $|$
-    \href{https://linkedin.com/in/...}{\underline{linkedin.com/in/jake}} $|$
-    \href{https://github.com/...}{\underline{github.com/jake}} $|$
-    \href{https://jakeryan.dev}{\underline{jakeryan.dev (portfolio)}}
+    \textbf{\Huge \scshape I Wayan Agus Darmawan} \\ \vspace{4pt}
+    \small
+    +62 821-4670-9679 $|$
+    \href{mailto:darmawandeveloper@gmail.com}{\underline{darmawandeveloper@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/agusdarmawnn/}{\underline{linkedin.com/in/agusdarmawnn}} $|$
+    \href{https://github.com/agus-darmawan}{\underline{github.com/agus-darmawan}} $|$
+    \href{https://agus-darmawan.com}{\underline{agus-darmawan.com}}
 \end{center}
 
 %-----------PROFESSIONAL SUMMARY-----------
 \section{Professional Summary}
-\small{Software Engineer with hands-on experience building full-stack web applications and REST APIs using Python, Flask, React, and PostgreSQL. Comfortable across the stack, from designing database schemas to shipping containerized services with CI/CD. Focused on writing clean, testable code and turning ambiguous requirements into working products.}
+\small{
+Hands-on Robotics Engineer and System Integrator experienced in designing, developing, and deploying autonomous platforms end-to-end -- hardware, control loops, and the software stack around them -- across quadruped, ASV, and drone systems.
+}
 
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Undergraduate Research Assistant}{June 2020 -- Present}
-      {Texas A\&M University}{College Station, TX}
+      {PT. Ezra Robotics Teknologi}{Dec. 2024 -- Present}
+      {Robotics Systems Lead $|$ Robotics Engineer}{Tangerang Selatan, Indonesia}
       \resumeItemListStart
-        \resumeItem{Built a REST API with FastAPI and PostgreSQL to ingest and serve data from learning management systems}
-        \resumeItem{Shipped a full-stack app (Flask, React, PostgreSQL, Docker) to analyze GitHub activity across student teams}
-        \resumeItem{Designed interactive dashboards to visualize classroom collaboration patterns}
+        \resumeItem{Led system integration, hardware-software architecture, and technical deployment for autonomous quadruped robots across industrial inspection, surveillance, and public infrastructure, including LiDAR-Inertial Odometry (LIO), RTK GNSS localization, and thermal inspection.}
+        \resumeItem{Executed field deployments, testing, and technical demonstrations for enterprise clients across electrical substations (PLN), oil \& gas facilities (Pertamina), and agricultural plantations (PTPN).}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Information Technology Support Specialist}{Sep. 2018 -- Present}
-      {Southwestern University}{Georgetown, TX}
+      {PT. ITS Tekno Sains}{Sep. 2024 -- Aug. 2025}
+      {Robotics Software Engineer --- iCar ITS}{Surabaya, Indonesia}
       \resumeItemListStart
-        \resumeItem{Automated device provisioning workflows, cutting manual setup time for new lab computers}
-        \resumeItem{Diagnosed and resolved software/network issues for 200+ endpoints across campus}
+        \resumeItem{Developed autonomous driving software using ROS2, Fast-LIO2, and RTK GPS for reliable navigation in GPS-available and GPS-denied environments, tuning PID controllers for vehicle stability.}
+        \resumeItem{Engineered a web-based Ground Control Station using Next.js, ROSBridge, PostgreSQL, and Docker for real-time telemetry visualization, remote operation, and maintenance logging.}
       \resumeItemListEnd
+
+    \resumeSubheading
+      {Barunastra ITS Roboboat Team}{Apr. 2022 -- Nov. 2024}
+      {Electrical \& Programming Division Leader $|$ Robotics Software Engineer}{Surabaya, Indonesia}
+      \resumeItemListStart
+        \resumeItem{Led the Electrical \& Programming division in designing and building autonomous surface vehicles (ASVs) from the ground up, integrating LiDAR, RTK GPS, IMU, and camera sensor fusion for international competitions.}
+        \resumeItem{Coordinated hardware-software integration and budget constraints across multidisciplinary teams to achieve international championship titles.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+  {PT. ITS Tekno Sains}{Sep. 2023 -- Dec. 2023}
+  {Robotics Software Lead --- Autonomous Surface Vehicle (Project-Based)}{Surabaya, Indonesia}
+\resumeItemListStart
+  \resumeItem{Led software development for a ROS-based ASV for hydrographic bathymetry surveys, a collaborative project between PT ITS Tekno Sains, PT Robomarine Indonesia, and STTAL (end user).}
+  \resumeItem{Designed autonomous navigation using Pure Pursuit with GPS RTK/IMU localization and YOLO-based buoy detection, directed field trials, and mentored MBKM ITS engineers to deliver a field-ready system.}
+\resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 %-----------PROJECTS-----------
-\section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
-          \resumeItemListStart
-            \resumeItem{Built a full-stack app with Flask serving a REST API consumed by a React frontend}
-            \resumeItem{Implemented GitHub OAuth to pull repository data per authenticated user}
-            \resumeItem{Used Celery + Redis to run data-sync jobs asynchronously without blocking the UI}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Simple Paintball} $|$ \emph{Java, Spigot API, Maven, TravisCI}}{May 2018 -- May 2020}
-          \resumeItemListStart
-            \resumeItem{Built and published a Minecraft server plugin, reaching 2K+ downloads and a 4.5/5 rating}
-            \resumeItem{Set up CI with TravisCI to auto-build and release on every new tag}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
+\section{Selected Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {\textbf{NextGen GCS} $|$ \emph{Tauri, Go, PyTorch/TensorRT, NATS, CesiumJS}}{2026}
+      \resumeItemListStart
+        \resumeItem{Built a full-stack drone ground control station: live video (RTSP to WebRTC/HLS), real-time YOLO object detection, and CesiumJS 3D flight tracking, backed by a Go/NATS services layer.}
+        \resumeItem{Designed a digital OpenIPC/WFB-ng video link to replace an analog FPV setup, feeding the GCS's video and inference pipeline.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Embedded Systems \& SLAM} $|$ \emph{FAST-LIO2, LIO-SAM, ESP-IDF, Jetson}}{2026}
+      \resumeItemListStart
+        \resumeItem{Built a Dockerized offline LiDAR-mapping pipeline (FAST-LIO2, LIO-SAM) for a Unitree Go2 EDU with Livox Mid-360, and extended the control SDK for a dual-board (Rockchip + Jetson) quadruped toward ROS2 Nav2 autonomy.}
+        \resumeItem{Developed modular ESP32-C3 firmware converting PX4 AUX RC PWM into brushed-ESC speed control, with an anti-windup PID loop, encoder feedback, and a WiFi web UI for live tuning.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
 
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Python, Java, JavaScript/TypeScript, SQL, C/C++, HTML/CSS} \\
-     \textbf{Backend \& APIs}{: Flask, FastAPI, Node.js, REST, PostgreSQL, Redis, Celery} \\
-     \textbf{Frontend}{: React, Material-UI, WordPress} \\
-     \textbf{DevOps \& Tools}{: Docker, Git, TravisCI, Google Cloud Platform, Linux} \\
-     \textbf{Testing \& Libraries}{: JUnit, pandas, NumPy, Matplotlib}
+     \textbf{Programming Languages}{: C/C++, Python, Swift, TypeScript/JavaScript, SQL} \\
+     \textbf{Robotics Frameworks}{: ROS/ROS2, ROSBridge, PID control, sensor fusion, SLAM (FAST-LIO2, LIO-SAM), Gazebo, Isaac Sim, Webots} \\
+     \textbf{Embedded \& AI}{: ESP-IDF, PlatformIO, RTK GNSS, MAVLink, YOLO, PyTorch/TensorRT} \\
+     \textbf{Platforms \& Hardware}{: Quadrupeds, Autonomous Surface Vehicles, Autonomous Ground Vehicles, Quadcopters/Drones} \\
     }}
  \end{itemize}
 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
-    \resumeSubheading
-      {Southwestern University}{Georgetown, TX}
-      {Bachelor of Arts in Computer Science, Minor in Business}{Aug. 2018 -- May 2021}
-    \resumeSubheading
-      {Blinn College}{Bryan, TX}
-      {Associate's in Liberal Arts}{Aug. 2014 -- May 2018}
+    \resumeProjectHeading
+      {\textbf{Institut Teknologi Sepuluh Nopember (ITS)} --- B.Eng. Computer Engineering}{Jul. 2021 -- Sep. 2025}
+    \resumeProjectHeading
+      {\textbf{Apple Developer Academy, Indonesia} --- iOS Developer Cohort}{Feb. 2025 -- Dec. 2025}
   \resumeSubHeadingListEnd
 
 \end{document}
