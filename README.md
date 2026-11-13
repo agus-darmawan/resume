@@ -21,11 +21,14 @@ All three share the same base layout: Charter font, ATS-friendly
 
 ## Versions
 
-| File | Focus | Use for |
-| --- | --- | --- |
-| `master-cv/resume.tex` | Every job, project, and skill, unfiltered | Personal reference only — never sent out |
-| `software-developer/resume.tex` | REST APIs, React, PostgreSQL, Docker, CI/CD | Full-stack / backend roles |
-| `robotics-engineer/resume.tex` | ROS/ROS2, PID control, sensor fusion, embedded hardware | Robotics / embedded roles |
+| File | PDF | Focus | Use for |
+| --- | --- | --- | --- |
+| `master-cv/resume.tex` | [resume.pdf](master-cv/resume.pdf) | Every job, project, and skill, unfiltered | Personal reference only — never sent out |
+| `software-developer/resume.tex` | [resume.pdf](software-developer/resume.pdf) | REST APIs, React, PostgreSQL, Docker, CI/CD | Full-stack / backend roles |
+| `robotics-engineer/resume.tex` | [resume.pdf](robotics-engineer/resume.pdf) | ROS/ROS2, PID control, sensor fusion, embedded hardware | Robotics / embedded roles |
+
+Rendered PDFs are committed next to each `resume.tex` — rebuild and commit
+them whenever the source changes.
 
 ## Workflow
 
