@@ -1,5 +1,6 @@
 # LaTeX build artifacts
 *.pdf
+!*/resume.pdf
 *.aux
 *.log
 *.out
